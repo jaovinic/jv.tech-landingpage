@@ -1,0 +1,106 @@
+---
+import { Image } from "astro:assets";
+import notebookImage from "../assets/images/notebook.png";
+---
+
+<section class="section about on-deep" id="about">
+  <div class="container grid">
+    <div class="image" data-reveal>
+      <Image
+        src={notebookImage}
+        alt="Notebook exibindo o logotipo da JV Tech"
+        widths={[480, 960]}
+        sizes="(min-width: 1023px) 480px, calc(100vw - 3rem)"
+      />
+    </div>
+    <div class="text" data-reveal>
+      <span class="eyebrow">01</span>
+      <h2 class="title">Quem somos</h2>
+      <p>
+        A <strong class="strong">JV Tech</strong> é uma consultoria de TI que
+        atua desde 2024 ajudando empresas de todos os tamanhos a usar a
+        tecnologia a seu favor. Atendemos de forma remota e presencial na região,
+        com soluções pensadas para a realidade de cada cliente.
+      </p>
+      <p>
+        Nosso trabalho não termina na instalação. A tecnologia precisa funcionar
+        como motor de crescimento do seu negócio:
+      </p>
+      <ul class="pillars">
+        <li>Otimizar processos</li>
+        <li>Aumentar a eficiência</li>
+        <li>Reduzir custos operacionais</li>
+      </ul>
+      <p>
+        Para isso, contamos com profissionais experientes e sempre atualizados,
+        que transformam seus desafios de TI em vantagem competitiva.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    overflow: hidden;
+  }
+
+  .image {
+    position: relative;
+  }
+
+  /* placa com as listras inclinadas da marca, deslocada para cima e para a esquerda */
+  .image::before {
+    content: "";
+    position: absolute;
+    top: -1rem;
+    right: 1rem;
+    bottom: 1rem;
+    left: -1rem;
+    border: 2px solid var(--principal);
+    background: repeating-linear-gradient(
+      98deg,
+      var(--stripe) 0 4px,
+      transparent 4px 16px
+    );
+    z-index: 0;
+  }
+
+  .image img {
+    position: relative;
+  }
+
+  .text p + p,
+  .pillars + p {
+    margin-top: 1lh;
+  }
+
+  .pillars {
+    display: grid;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .pillars li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+  }
+
+  /* marcador inclinado a 8°, como o itálico do logotipo */
+  .pillars li::before {
+    content: "";
+    flex: none;
+    width: 0.5rem;
+    height: 0.75rem;
+    background: var(--principal);
+    transform: skewX(-8deg);
+  }
+
+  @media (min-width: 1023px) {
+    .container {
+      grid-auto-flow: column;
+      align-items: center;
+    }
+  }
+</style>

@@ -1,0 +1,147 @@
+---
+import { Image } from "astro:assets";
+import erpImage from "../assets/images/erp.png";
+import suporteImage from "../assets/images/suporte-tecnico.png";
+import desenvolvimentoImage from "../assets/images/desenvolvimento.svg";
+import inovacaoImage from "../assets/images/inovacao.png";
+
+const services = [
+  {
+    image: erpImage,
+    alt: "Logotipo da LC Sistemas",
+    title: "Sistema LC ERP",
+    description:
+      "Somos revenda do LC ERP, o sistema de gestão que integra finanças, vendas, estoque e produção em um só lugar. Cuidamos de tudo, da implantação ao suporte, para a sua empresa ter mais controle e menos retrabalho.",
+    tags: ["Implantação", "Treinamento", "Migração de dados", "Suporte"],
+  },
+  {
+    image: desenvolvimentoImage,
+    alt: "",
+    title: "Desenvolvimento de Software",
+    description:
+      "Sistemas web, landing pages e automações feitos sob medida para o seu negócio. Software que resolve o problema real da sua empresa, construído com uma stack moderna e consolidada.",
+    tags: ["Java", "Spring Boot", "Angular", "MySQL", "PostgreSQL"],
+  },
+  {
+    image: suporteImage,
+    alt: "",
+    title: "Suporte Técnico",
+    description:
+      "Resolvemos problemas de hardware e software para a sua empresa não parar. Atendimento remoto ou presencial na região, em horário comercial, das 8h às 18h.",
+    tags: [],
+  },
+  {
+    image: inovacaoImage,
+    alt: "",
+    title: "Inovação",
+    description:
+      "Acompanhamos as novas tecnologias e tendências do setor e levamos ao seu negócio o que faz sentido, para você se destacar no mercado.",
+    tags: [],
+  },
+];
+---
+
+<section class="section" id="services">
+  <div class="container grid">
+    <header data-reveal>
+      <span class="eyebrow">02</span>
+      <h2 class="title">Serviços</h2>
+      <p class="subtitle">
+        Do sistema de gestão ao suporte do dia a dia: a <strong class="strong">JV Tech</strong>{" "}
+        reúne em um só parceiro o que sua empresa precisa em TI.
+      </p>
+    </header>
+    <div class="cards grid">
+      {
+        services.map(({ image, alt, title, description, tags }, index) => (
+          <div class="card frame" data-reveal>
+            <div class="card-top">
+              <Image src={image} alt={alt} height={160} />
+              <span class="index" aria-hidden="true">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+            </div>
+            <h3 class="title">{title}</h3>
+            <p>{description}</p>
+            {tags.length > 0 && (
+              <ul class="tags">
+                {tags.map((tag) => (
+                  <li>{tag}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  header {
+    margin-bottom: 4rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .cards {
+    gap: 1.5rem;
+  }
+
+  .card {
+    padding: 2rem;
+  }
+
+  .card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-top img {
+    width: auto;
+    max-width: 70%;
+    height: 5rem;
+  }
+
+  /* os ícones são traços pretos: no tema escuro saem brancos */
+  :global(:root[data-theme="dark"]) .card-top img {
+    filter: invert(1);
+  }
+
+  .index {
+    font: 700 1rem/1.1 var(--font-sans);
+    letter-spacing: 0.06em;
+    color: var(--accent);
+  }
+
+  .card .title {
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.75rem;
+  }
+
+  @media (min-width: 1023px) {
+    header {
+      max-width: 32rem;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    header .eyebrow {
+      justify-content: center;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+    }
+
+    .cards {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

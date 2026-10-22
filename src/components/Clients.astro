@@ -1,0 +1,95 @@
+---
+const segments = [
+  "Varejo",
+  "Financeiro",
+  "Consultoria rural",
+  "Fábrica de móveis escolares",
+];
+
+const clients = [
+  "GIPAY Tech",
+  "Art Móveis",
+  "Projetec",
+  "Imperial Magazine",
+  "Potencial Móveis",
+];
+---
+
+<section class="section" id="clients">
+  <div class="container grid">
+    <header data-reveal>
+      <span class="eyebrow">03</span>
+      <h2 class="title">Quem já confia na JV Tech</h2>
+      <p class="subtitle">
+        Do varejo ao financeiro, da consultoria rural à fábrica de móveis
+        escolares: levamos tecnologia sob medida a negócios de segmentos
+        diferentes.
+      </p>
+      <ul class="tags">
+        {segments.map((segment) => <li>{segment}</li>)}
+      </ul>
+    </header>
+
+    <ul class="clients">
+      {
+        clients.map((client) => (
+          <li class="client frame" data-reveal>
+            {client}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  header .tags {
+    justify-content: center;
+  }
+
+  .clients {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .client {
+    display: grid;
+    place-items: center;
+    min-height: 5.5rem;
+    padding: 1rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-align: center;
+  }
+
+  /* 5 clientes: o último ocupa a linha inteira no mobile */
+  .client:last-child {
+    grid-column: 1 / -1;
+  }
+
+  header {
+    text-align: center;
+  }
+
+  header .eyebrow {
+    justify-content: center;
+  }
+
+  @media (min-width: 1023px) {
+    header {
+      max-width: 36rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .clients {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .client:last-child {
+      grid-column: auto;
+    }
+  }
+</style>
