@@ -1,67 +1,75 @@
 /*
- * Tokens do Design System JV Tech (tokens.json).
+ * Tokens da identidade visual JV Tech (nova marca: monograma JV + Inter).
  * Tema claro é o padrão; o escuro entra com <html data-theme="dark"> (botão no header).
- * A identidade não define escala de espaçamento, raios nem sombras: o site não usa raios nem sombras.
- * O site não usa a fonte MGS2 do DS: títulos e texto usam a fonte de texto do sistema.
+ * Sem degradês, relevos nem sombras: a marca é plana e usa um único gesto de destaque, o V verde.
  */
 
 :root {
   color-scheme: light;
 
   /* cores da marca */
-  --principal: #00c48e;
-  --secundaria: #008768;
-  --noite: #101926;
-  --marinho: #132d46;
+  --azul-noite: #0b1b2b;
+  --verde: #00a57a; /* o V da logo e formas grandes: 3,2:1 sobre branco, nunca em texto pequeno */
+  --verde-texto: #00755a; /* links, rótulos e botões em fundo claro: 5,7:1 sobre branco */
+  --verde-claro: #2fd6a5; /* o V em fundo escuro e destaques: 9,4:1 sobre azul-noite */
+  --nevoa: #eef3f6;
+  --ardosia: #4a5a6c; /* texto secundário: 7,1:1 sobre branco */
+  --marinho: #132d46; /* painéis sobre azul-noite */
   --branco: #ffffff;
 
   /* papéis (tema claro) */
   --surface: var(--branco);
-  --surface-deep: var(--marinho);
-  --ink: var(--noite);
-  --accent: var(--secundaria); /* 4,5:1 sobre branco: texto a partir de 16px ou em negrito */
+  --surface-alt: var(--nevoa);
+  --ink: var(--azul-noite);
+  --muted: var(--ardosia);
+  --accent: var(--verde-texto);
   --on-accent: var(--branco);
-  --on-principal: var(--noite);
 
-  /* linhas, grade e listras: `marinho` e `principal` com transparência */
-  --line: #132d4629;
-  --grid: #132d4612;
-  --stripe: #00c48e59;
+  /* linhas e grade: `azul-noite` com transparência */
+  --line: #0b1b2b29;
+  --grid: #0b1b2b12;
 
-  /* tipografia */
-  --font-sans: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  /* tipografia: uma família só, Inter (licença OFL) */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
 
   /* usos do site, derivados dos papéis */
   --header-bg: #fffffff2;
   --card: var(--branco);
 }
 
-/* tema escuro: `noite` é o fundo e o destaque volta a ser `principal` */
+/* tema escuro: `azul-noite` é o fundo e o destaque passa a ser o verde claro */
 :root[data-theme="dark"] {
   color-scheme: dark;
 
-  --surface: var(--noite);
+  --surface: var(--azul-noite);
+  --surface-alt: var(--marinho);
   --ink: var(--branco);
-  --accent: var(--principal);
-  --on-accent: var(--noite);
+  --muted: #b7c4d1;
+  --accent: var(--verde-claro);
+  --on-accent: var(--azul-noite);
 
-  /* `noite` e `marinho` quase não se distinguem (1,25:1): linhas separam o que o tom não separa */
-  --line: #00c48e40;
+  /* `azul-noite` e `marinho` quase não se distinguem (1,25:1): linhas separam o que o tom não separa */
+  --line: #2fd6a540;
   --grid: #ffffff0d;
 
-  --header-bg: #101926f2;
+  --header-bg: #0b1b2bf2;
   --card: var(--marinho);
 }
 
 /*
- * Faixas escuras (`surface-deep`): sobre elas todo texto é `branco` e o destaque volta a ser `principal`.
- * Redefine os papéis para quem está dentro.
+ * Faixas escuras: azul-noite (marinho no tema escuro, onde o fundo da página já é azul-noite);
+ * sobre elas todo texto é branco e o destaque é o verde claro.
  */
 .on-deep {
-  --surface: var(--marinho);
+  --surface: var(--azul-noite);
   --ink: var(--branco);
-  --accent: var(--principal);
-  --line: #00c48e40;
+  --muted: #b7c4d1;
+  --accent: var(--verde-claro);
+  --line: #2fd6a540;
   background: var(--surface);
   color: var(--ink);
+}
+
+:root[data-theme="dark"] .on-deep {
+  --surface: var(--marinho);
 }

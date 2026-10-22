@@ -5,7 +5,7 @@ Landing page da **JV Tech**, consultoria de TI. Feita com [Astro](https://astro.
 ## Estrutura
 
 ```
-public/            favicon e CNAME (copiados como estão para o build)
+public/            favicons e CNAME (copiados como estão para o build)
 src/
   assets/          imagens e fonte de ícones (otimizadas no build)
   components/      Header, Hero, About, Services, Contact, Footer, ...
@@ -19,12 +19,14 @@ Cada componente tem seus próprios estilos (escopados) e, quando precisa, seu pr
 
 ## Identidade visual
 
-Segue o Design System da JV Tech (cores e logotipos da Kzn Design). O tema **claro** é o padrão e há um **tema escuro** no botão do header (a escolha fica salva no navegador, em `localStorage`). O nome é sempre **JV Tech**.
+Segue a nova identidade da JV Tech: monograma JV (o V verde sobe acima do J), paleta azul-noite e verde, e a fonte **Inter**. O tema **claro** é o padrão e há um **tema escuro** no botão do header (a escolha fica salva no navegador, em `localStorage`). O nome é sempre **JV Tech**.
 
-- `src/styles/tokens.css`: tokens do DS (`principal`, `secundaria`, `noite`, `marinho`, `branco` e os papéis `surface`, `ink`, `accent`...), com os valores do tema escuro em `:root[data-theme="dark"]`. A classe `.on-deep` redefine os papéis para as faixas escuras (`marinho`), onde o texto é branco e o destaque é `principal`.
-- Sem raios nem sombras, como o DS define.
-- **Fonte:** o site não usa a MGS2 do DS (licença não confirmada); títulos e texto usam a fonte de texto do sistema.
-- Logotipos em `src/assets/images/`: `logo-claro.png` (tema claro), `logo-escuro.png` (tema escuro e faixas `marinho`) e `hero.png` (`LOGO JV TECH C BG.png`, também usado no Open Graph).
+- `src/styles/tokens.css`: cores da marca (`azul-noite`, `verde`, `verde-texto`, `verde-claro`, `nevoa`, `ardosia`, `marinho`) e os papéis `surface`, `ink`, `accent`..., com os valores do tema escuro em `:root[data-theme="dark"]`. A classe `.on-deep` redefine os papéis para as faixas escuras, onde o texto é branco e o destaque é o verde claro.
+- **Verde:** `verde` (#00A57A) só em formas grandes (3,2:1 sobre branco); em texto e botões sobre fundo claro, `verde-texto` (#00755A, 5,7:1).
+- Sem degradês, relevos nem sombras.
+- **Fonte:** Inter (licença OFL), hospedada em `src/assets/fonts/inter-latin.woff2` (subconjunto latino).
+- Logotipos em `src/assets/images/`: `logo.svg` (em cores, tema claro), `logo-reverse.svg` (tema escuro e faixas azul-noite), `hero.png` (logo com descritor sobre azul-noite, também usado no Open Graph) e `notebook.png` (mockup com a logo nova). Nunca redigite "JV Tech" em outra fonte: use sempre os arquivos da logo.
+- Favicon: `public/favicon.svg` (ícone do kit), com `favicon.png` e `apple-touch-icon.png` gerados a partir dele.
 
 ## Como executar
 

@@ -1,12 +1,12 @@
 ---
 import { Image } from "astro:assets";
-import logoClaro from "../assets/images/logo-claro.png";
-import logoEscuro from "../assets/images/logo-escuro.png";
+import logoClaro from "../assets/images/logo.svg";
+import logoEscuro from "../assets/images/logo-reverse.svg";
 
 interface Props {
   /**
-   * `auto`: troca com o tema (V3 no claro, principal no escuro).
-   * `escuro`: sempre a versão principal, para faixas `marinho`.
+   * `auto`: troca com o tema (logo em cores no claro, reversa no escuro).
+   * `escuro`: sempre a versão reversa, para faixas azul-noite.
    */
   fundo?: "auto" | "escuro";
 }
@@ -18,24 +18,30 @@ const alt = "JV Tech, Consultoria de TI";
 <a class:list={["logo", `logo--${fundo}`]} href="#home">
   {
     fundo === "auto" && (
-      <Image class="claro" src={logoClaro} alt={alt} widths={[160, 320]} sizes="160px" loading="eager" />
+      <Image class="claro" src={logoClaro} alt={alt} width={308} height={84} loading="eager" />
     )
   }
-  <Image class="escuro" src={logoEscuro} alt={alt} widths={[160, 320]} sizes="160px" loading="eager" />
+  <Image class="escuro" src={logoEscuro} alt={alt} width={308} height={84} loading="eager" />
 </a>
 
 <style is:global>
+  /* mínimo da marca: 120 px de largura na tela */
   .logo {
     display: block;
     height: auto;
-    width: 6rem;
+    width: 8.5rem;
   }
 
   .logo--escuro {
     width: 10rem;
   }
 
-  /* logo `auto`: o V3 aparece no tema claro, o principal no escuro */
+  /* `block` nas duas versões: a imagem `inline` ganha uma faixa de linha abaixo e o logo pularia ao trocar de tema */
+  .logo img {
+    display: block;
+  }
+
+  /* logo `auto`: a colorida aparece no tema claro, a reversa no escuro */
   .logo--auto .escuro {
     display: none;
   }

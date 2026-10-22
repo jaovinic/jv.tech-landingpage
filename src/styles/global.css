@@ -1,3 +1,13 @@
+/*====  FONTE ============================ */
+/* Inter (licença OFL), só o subconjunto latino: cobre o português */
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/inter-latin.woff2") format("woff2");
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 /*====  RESET ============================ */
 * {
   margin: 0;
@@ -64,7 +74,7 @@ body {
 }
 
 .frame:hover {
-  border-color: var(--principal);
+  border-color: var(--verde);
 }
 
 .frame::before,
@@ -73,7 +83,7 @@ body {
   position: absolute;
   width: 1rem;
   height: 1rem;
-  border: 0 solid var(--principal);
+  border: 0 solid var(--verde);
 }
 
 .frame::before {
@@ -130,7 +140,6 @@ body {
   width: 3rem;
   height: 2px;
   background: var(--accent);
-  transform: skewX(-8deg);
 }
 
 /* grade de blueprint que some para baixo */
@@ -155,11 +164,11 @@ body {
   color: var(--accent);
 }
 
-/* paralelogramo inclinado a 8°, o ângulo do itálico do logotipo */
+/* botão: retângulo plano em Verde texto com letra branca (5,7:1) */
 .button {
   position: relative;
   isolation: isolate;
-  color: var(--on-principal);
+  color: var(--on-accent);
   height: 3.5rem;
   display: inline-flex;
   align-items: center;
@@ -173,8 +182,7 @@ body {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: var(--principal);
-  transform: skewX(-8deg);
+  background: var(--accent);
   transition: background 0.3s;
 }
 

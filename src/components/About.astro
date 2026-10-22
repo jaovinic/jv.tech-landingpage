@@ -19,8 +19,9 @@ import notebookImage from "../assets/images/notebook.png";
       <p>
         A <strong class="strong">JV Tech</strong> é uma consultoria de TI que
         atua desde 2024 ajudando empresas de todos os tamanhos a usar a
-        tecnologia a seu favor. Atendemos de forma remota e presencial na região,
-        com soluções pensadas para a realidade de cada cliente.
+        tecnologia a seu favor. Atendemos de forma remota em todo o país e
+        presencialmente na nossa região, com soluções pensadas para a realidade
+        de cada cliente.
       </p>
       <p>
         Nosso trabalho não termina na instalação. A tecnologia precisa funcionar
@@ -48,7 +49,7 @@ import notebookImage from "../assets/images/notebook.png";
     position: relative;
   }
 
-  /* placa com as listras inclinadas da marca, deslocada para cima e para a esquerda */
+  /* moldura deslocada para cima e para a esquerda */
   .image::before {
     content: "";
     position: absolute;
@@ -56,12 +57,7 @@ import notebookImage from "../assets/images/notebook.png";
     right: 1rem;
     bottom: 1rem;
     left: -1rem;
-    border: 2px solid var(--principal);
-    background: repeating-linear-gradient(
-      98deg,
-      var(--stripe) 0 4px,
-      transparent 4px 16px
-    );
+    border: 2px solid var(--verde);
     z-index: 0;
   }
 
@@ -87,14 +83,13 @@ import notebookImage from "../assets/images/notebook.png";
     font-weight: 700;
   }
 
-  /* marcador inclinado a 8°, como o itálico do logotipo */
+  /* marcador reto, na cor do V da logo */
   .pillars li::before {
     content: "";
     flex: none;
     width: 0.5rem;
     height: 0.75rem;
-    background: var(--principal);
-    transform: skewX(-8deg);
+    background: var(--verde);
   }
 
   @media (min-width: 1023px) {

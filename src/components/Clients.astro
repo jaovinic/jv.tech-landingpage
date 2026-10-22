@@ -1,4 +1,13 @@
 ---
+import { Image } from "astro:assets";
+import gipayTech from "../assets/images/clientes/gipay-tech.svg";
+import gipay from "../assets/images/clientes/gipay.svg";
+import gipayCred from "../assets/images/clientes/gipay-cred.svg";
+import artMoveis from "../assets/images/clientes/art-moveis.png";
+import projetec from "../assets/images/clientes/projetec.png";
+import imperial from "../assets/images/clientes/imperial.png";
+import potencial from "../assets/images/clientes/potencial.png";
+
 const segments = [
   "Varejo",
   "Financeiro",
@@ -6,12 +15,17 @@ const segments = [
   "Fábrica de móveis escolares",
 ];
 
+const gipayGroup = [
+  { logo: gipayTech, name: "GIPAY Tech", role: "Serviços de CaaS" },
+  { logo: gipay, name: "GIPAY", role: "Banco digital" },
+  { logo: gipayCred, name: "GIPAY Cred", role: "Empréstimos" },
+];
+
 const clients = [
-  "GIPAY Tech",
-  "Art Móveis",
-  "Projetec",
-  "Imperial Magazine",
-  "Potencial Móveis",
+  { logo: artMoveis, name: "Art Móveis", role: "Fábrica de móveis escolares" },
+  { logo: projetec, name: "Projetec", role: "Consultoria rural" },
+  { logo: imperial, name: "Imperial Magazine", role: "Varejo" },
+  { logo: potencial, name: "Potencial Móveis", role: "Varejo" },
 ];
 ---
 
@@ -30,11 +44,30 @@ const clients = [
       </ul>
     </header>
 
-    <ul class="clients">
+    <div class="group" data-reveal>
+      <h3 class="group-title">Grupo GIPAY</h3>
+      <ul class="clients clients--group">
+        {
+          gipayGroup.map(({ logo, name, role }) => (
+            <li class="client frame">
+              <div class="logo-box">
+                <Image src={logo} alt={name} widths={[240, 480]} sizes="240px" />
+              </div>
+              <p class="role">{role}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <ul class="clients clients--others">
       {
-        clients.map((client) => (
+        clients.map(({ logo, name, role }) => (
           <li class="client frame" data-reveal>
-            {client}
+            <div class="logo-box">
+              <Image src={logo} alt={name} widths={[240, 480]} sizes="200px" />
+            </div>
+            <p class="role">{role}</p>
           </li>
         ))
       }
@@ -47,34 +80,60 @@ const clients = [
     justify-content: center;
   }
 
-  .clients {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
-
-  .client {
-    display: grid;
-    place-items: center;
-    min-height: 5.5rem;
-    padding: 1rem;
-    font-size: 1.125rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    text-align: center;
-  }
-
-  /* 5 clientes: o último ocupa a linha inteira no mobile */
-  .client:last-child {
-    grid-column: 1 / -1;
-  }
-
   header {
     text-align: center;
   }
 
   header .eyebrow {
     justify-content: center;
+  }
+
+  .group-title {
+    margin-bottom: 1rem;
+    font: 700 1rem/1.1 var(--font-sans);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .clients {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .clients--others {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* as logos dos clientes foram feitas para fundo claro: o cartão é branco nos dois temas */
+  .client {
+    --card: var(--branco);
+    --line: #0b1b2b29;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 1rem 1.25rem;
+    text-align: center;
+    color: var(--azul-noite);
+  }
+
+  .logo-box {
+    width: 100%;
+    height: 4.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .logo-box :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .role {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--ardosia);
   }
 
   @media (min-width: 1023px) {
@@ -84,12 +143,12 @@ const clients = [
       margin-right: auto;
     }
 
-    .clients {
-      grid-template-columns: repeat(5, 1fr);
+    .clients--group {
+      grid-template-columns: repeat(3, 1fr);
     }
 
-    .client:last-child {
-      grid-column: auto;
+    .clients--others {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 </style>
