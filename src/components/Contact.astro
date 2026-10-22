@@ -1,0 +1,112 @@
+---
+const phone = "5598983044781";
+const whatsappMessage = "Oi! Gostaria de saber mais sobre os serviços da JV Tech.";
+const whatsappUrl = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(whatsappMessage)}`;
+---
+
+<section class="section" id="contact">
+  <div class="container grid">
+    <div class="text" data-reveal>
+      <span class="eyebrow">04</span>
+      <h2 class="title">Vamos conversar sobre o seu negócio?</h2>
+      <p>
+        Fale com a <strong class="strong">JV Tech</strong> pelo WhatsApp. Tiramos
+        suas dúvidas, ouvimos suas críticas e sugestões e indicamos o melhor
+        caminho para a sua empresa.
+      </p>
+      <a
+        class="button"
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <i class="icon-whatsapp"></i>Chamar no WhatsApp
+      </a>
+    </div>
+
+    <div class="links" data-reveal>
+      <ul class="grid">
+        <li>
+          <i class="icon-phone"></i><a href={`tel:+${phone}`}>(98) 9 8304-4781</a>
+        </li>
+        <li>
+          <i class="icon-map-pin"></i>Av. Beira Rio, 470, Itapecuru Mirim - MA
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M12 7v5l3 2"></path>
+          </svg>
+          Atendimento das 8h às 18h
+        </li>
+        <li>
+          <i class="icon-mail"></i><a href="mailto:jvtech58357@outlook.com"
+            >jvtech58357@outlook.com</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .container {
+    gap: 4rem;
+  }
+
+  .text p {
+    margin-bottom: 2rem;
+  }
+
+  .button i,
+  li i {
+    font-size: 1.5rem;
+    margin-right: 0.625rem;
+  }
+
+  ul {
+    gap: 2rem;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+  }
+
+  li svg {
+    flex: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.625rem;
+    color: var(--accent);
+  }
+
+  li i {
+    color: var(--accent);
+  }
+
+  li a {
+    color: var(--accent);
+  }
+
+  li a:hover {
+    text-decoration: underline;
+  }
+
+  @media (min-width: 1023px) {
+    .container {
+      padding: 0 2rem;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .container {
+      grid-auto-flow: column;
+      align-items: center;
+    }
+
+    .text {
+      max-width: 25rem;
+    }
+  }
+</style>

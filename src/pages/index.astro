@@ -1,0 +1,36 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Services from "../components/Services.astro";
+import Clients from "../components/Clients.astro";
+import Contact from "../components/Contact.astro";
+import Divider from "../components/Divider.astro";
+import Footer from "../components/Footer.astro";
+import BackToTop from "../components/BackToTop.astro";
+---
+
+<Layout
+  title="JV Tech | Consultoria de TI"
+  description="A JV Tech é uma consultoria de TI de Itapecuru Mirim (MA): revenda do LC ERP, desenvolvimento de sistemas web, suporte técnico e inovação, com atendimento remoto e presencial na região."
+  ogDescription="Tecnologia sob medida para o seu negócio: Sistema LC ERP, desenvolvimento de software, suporte técnico e inovação."
+>
+  <Header />
+
+  <main>
+    <Hero />
+    <Divider variant={1} />
+    <About />
+    <Divider variant={2} />
+    <Services />
+    <Divider variant={1} />
+    <Clients />
+    <Divider variant={2} />
+    <Contact />
+    <Divider variant={1} />
+  </main>
+
+  <Footer />
+  <BackToTop />
+</Layout>

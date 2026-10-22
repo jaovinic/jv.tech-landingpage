@@ -1,0 +1,67 @@
+/*
+ * Tokens do Design System JV Tech (tokens.json).
+ * Tema claro é o padrão; o escuro entra com <html data-theme="dark"> (botão no header).
+ * A identidade não define escala de espaçamento, raios nem sombras: o site não usa raios nem sombras.
+ * O site não usa a fonte MGS2 do DS: títulos e texto usam a fonte de texto do sistema.
+ */
+
+:root {
+  color-scheme: light;
+
+  /* cores da marca */
+  --principal: #00c48e;
+  --secundaria: #008768;
+  --noite: #101926;
+  --marinho: #132d46;
+  --branco: #ffffff;
+
+  /* papéis (tema claro) */
+  --surface: var(--branco);
+  --surface-deep: var(--marinho);
+  --ink: var(--noite);
+  --accent: var(--secundaria); /* 4,5:1 sobre branco: texto a partir de 16px ou em negrito */
+  --on-accent: var(--branco);
+  --on-principal: var(--noite);
+
+  /* linhas, grade e listras: `marinho` e `principal` com transparência */
+  --line: #132d4629;
+  --grid: #132d4612;
+  --stripe: #00c48e59;
+
+  /* tipografia */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+
+  /* usos do site, derivados dos papéis */
+  --header-bg: #fffffff2;
+  --card: var(--branco);
+}
+
+/* tema escuro: `noite` é o fundo e o destaque volta a ser `principal` */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --surface: var(--noite);
+  --ink: var(--branco);
+  --accent: var(--principal);
+  --on-accent: var(--noite);
+
+  /* `noite` e `marinho` quase não se distinguem (1,25:1): linhas separam o que o tom não separa */
+  --line: #00c48e40;
+  --grid: #ffffff0d;
+
+  --header-bg: #101926f2;
+  --card: var(--marinho);
+}
+
+/*
+ * Faixas escuras (`surface-deep`): sobre elas todo texto é `branco` e o destaque volta a ser `principal`.
+ * Redefine os papéis para quem está dentro.
+ */
+.on-deep {
+  --surface: var(--marinho);
+  --ink: var(--branco);
+  --accent: var(--principal);
+  --line: #00c48e40;
+  background: var(--surface);
+  color: var(--ink);
+}

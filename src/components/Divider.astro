@@ -1,0 +1,23 @@
+---
+interface Props {
+  variant: 1 | 2;
+}
+
+const { variant } = Astro.props;
+---
+
+<div class:list={["divider", `divider-${variant}`]} aria-hidden="true"></div>
+
+<style>
+  .divider {
+    height: 1px;
+  }
+
+  .divider-1 {
+    background: linear-gradient(270deg, var(--principal), transparent);
+  }
+
+  .divider-2 {
+    background: linear-gradient(270deg, transparent, var(--principal));
+  }
+</style>
